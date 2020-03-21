@@ -9,6 +9,16 @@ def get_files(img_dir):
     imgs, masks, xmls = list_files(img_dir)
     return imgs, masks, xmls
 
+def list_all_subfolders(in_path):
+    result = []
+    filenames= os.listdir(in_path) # get all files' and folders' names in the directory
+    for filename in filenames: # loop through all the files and folders
+        joined_dir = os.path.join(in_path, filename)
+        if os.path.isdir(joined_dir): # check whether the current object is a folder or not
+            result.append(joined_dir)   
+    result.sort()
+    return result
+
 def list_files(in_path):
     img_files = []
     mask_files = []
